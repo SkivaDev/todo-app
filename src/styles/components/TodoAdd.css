@@ -1,0 +1,15 @@
+.TodoAddButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  /* width: px; */
+  height: 100%;
+  background: transparent;
+  border: none;
+}
+
+.TodoAddButton > .icon {
+  font-size: 40px;
+  color: #fff;
+}

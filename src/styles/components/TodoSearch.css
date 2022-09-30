@@ -1,0 +1,30 @@
+.input_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 15px;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  background-color: #25273c;
+  box-shadow: 0px 5px 20px 0px rgba(0,0,0,.5);
+}
+
+.input_container > input {
+  width: 100%;
+  height: 15px;
+  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+.input_container > input:focus-visible {
+  outline: 2px transparent;
+  outline-offset: 3px;
+}
+
+.input_container > .icon {
+  width: 29px;
+  height: 29px;
+}

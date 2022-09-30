@@ -1,0 +1,9 @@
+main > div {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0 auto;
+  max-width: 560px;
+  padding: 0 2rem;
+  width: 100%;
+}

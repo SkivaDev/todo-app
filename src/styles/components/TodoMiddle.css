@@ -1,0 +1,9 @@
+.TodoMiddle {
+  grid-gap: 1rem;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 50px;
+  margin-bottom: 2rem;
+  place-items: center center;
+}

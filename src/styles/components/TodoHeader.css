@@ -1,0 +1,13 @@
+.Header_container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.Header_text {
+  font-size: 36px;
+  text-align: center;
+}
+
+.Header_text>span {
+  color:aqua;
+}
