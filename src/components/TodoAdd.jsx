@@ -1,10 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { BsFillPlusCircleFill } from "react-icons/bs"
 import "../styles/components/TodoAdd.css"
-import { TodoContext } from '../TodoContext/TodoContext'
 
-function TodoAdd() {
-  const {setOpenModal} = useContext(TodoContext);
+
+function TodoAdd({setOpenModal}) {
 
   const onClickButtonModal = () => {
     setOpenModal(prevState => !prevState);

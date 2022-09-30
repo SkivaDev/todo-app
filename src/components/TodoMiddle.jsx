@@ -3,11 +3,10 @@ import TodoAdd from './TodoAdd'
 import TodoSearch from './TodoSearch'
 import "../styles/components/TodoMiddle.css"
 
-function TodoMiddle() {
+function TodoMiddle({children}) {
   return (
     <div className='TodoMiddle'>
-      <TodoSearch />
-      <TodoAdd />
+      {children}
     </div>
   )
 }

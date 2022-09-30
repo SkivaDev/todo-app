@@ -1,54 +1,34 @@
-import React, { useContext } from "react";
-import TodoModal from "./TodoModal";
-import { TodoContext } from "../TodoContext/TodoContext";
-import TodoAdd from "./TodoAdd";
-import TodoItem from "./TodoItem";
-import TodoForm from "./TodoForm";
-import "../styles/components/TodoList.css"
+import React from "react";
+import "../styles/components/TodoList.css";
 
-function TodoList() {
-  const {
-    searchedTodos: todos,
-    totalTodos,
-    searchValue,
-    completeTodo,
-    deleteTodo,
-    editTodo,
-    openModal,
-  } = useContext(TodoContext);
-
+function TodoList(props) {
   return (
-    <>
-      <ul className="TodoList">
-        {todos && todos.length > 0 ? (
-          todos.map(({ completed, text, id }) => (
-            <TodoItem
-              key={text}
-              id={id}
-              completed={completed}
-              text={text}
-              onComplete={() => completeTodo(id)}
-              onDelete={() => deleteTodo(id)}
-              onEdit={() => editTodo(id)}
-            />
-          ))
-        ) : totalTodos > 0 ? (
-          <li className="ad_itemNotfound">
-            <p>No hay resultados para: {searchValue}</p>
-          </li>
-        ) : (
-          <li className="ad_noItems">
-            Crea una nueva tarea <TodoAdd />
-          </li>
-        )}
+    <section className="TodoList-container">
+      <ul>
+        {!props.totalTodos && props.onEmptyTodos()}
+        {props.totalTodos &&
+          !props.searchedTodos.length &&
+          props.onNotFoundTodos()}
+
+        {props.searchedTodos.map(props.children)}
       </ul>
-      {!!openModal && (
-        <TodoModal>
-          <TodoForm />
-        </TodoModal>
-      )}
-    </>
+      
+    </section>
   );
 }
 
 export default TodoList;
+
+{
+  /* {todos && todos.length > 0 ? (
+    todos.map()
+  ) : totalTodos > 0 ? (
+    <li className="ad_itemNotfound">
+      <p>No hay resultados para: {searchValue}</p>
+    </li>
+  ) : (
+    <li className="ad_noItems">
+      Crea una nueva tarea <TodoAdd />
+    </li>
+  )} */
+}

@@ -1,6 +1,5 @@
 import React from 'react'
 import { createPortal } from 'react-dom';
-import TodoForm from './TodoForm'
 import "../styles/components/TodoModal.css"
 
 
