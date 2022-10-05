@@ -4,15 +4,12 @@ import "../styles/components/TodoList.css";
 function TodoList(props) {
   return (
     <section className="TodoList-container">
-      <ul>
         {!props.totalTodos && props.onEmptyTodos()}
-        {props.totalTodos &&
+        {!!props.totalTodos &&
           !props.searchedTodos.length &&
           props.onNotFoundTodos()}
 
-        {props.searchedTodos.map(props.children)}
-      </ul>
-      
+        {props.children}
     </section>
   );
 }

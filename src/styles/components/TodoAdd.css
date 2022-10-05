@@ -9,7 +9,14 @@
   border: none;
 }
 
-.TodoAddButton > .icon {
-  font-size: 40px;
-  color: #fff;
+
+.TodoAddButton .icon {
+  font-size: 32px;
+  color: #b0b0cc;
+}
+
+
+.TodoAddButton .icon:hover {
+  cursor: pointer;
+  color: aqua;
 }

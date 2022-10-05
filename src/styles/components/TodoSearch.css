@@ -24,7 +24,12 @@
   outline-offset: 3px;
 }
 
-.input_container > .icon {
+.input_container .icon {
   width: 29px;
   height: 29px;
+  color: #b0b0cc;
+}
+
+.input_container .icon:hover {
+  color: #fff;
 }

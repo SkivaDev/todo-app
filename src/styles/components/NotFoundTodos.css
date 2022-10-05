@@ -1,0 +1,11 @@
+.ad_itemNotfound {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 14px;
+  word-break: break-word;
+  color: #b0b0cc;
+}

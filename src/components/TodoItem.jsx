@@ -4,15 +4,9 @@ import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import "../styles/components/TodoItem.css";
 
-// key={text}
-// id={id}
-// completed={completed}
-// text={text}
-// onComplete={completedTodo}
-// onDelete={deleteTodo}
-// onEdit={editTodo}
 
-function TodoItem({ text , id, completed, onComplete, onDelete, onEdit}) {
+
+function TodoItem({ text , id, completed, onComplete, onDelete, onOpenEdit}) {
   return (
     <li className="TodoItem">
       <div className="cheackbox">
@@ -22,12 +16,12 @@ function TodoItem({ text , id, completed, onComplete, onDelete, onEdit}) {
         >
           <BsCheckLg className={`icon_check`} />
         </button>
-        <p>{text}</p>
+        <p className={`text_cheackbox ${completed && "text_cheackbox--active"}`}>{text}</p>
       </div>
       <div className="buttons_container">
         <button 
         className="button_edit"
-        onClick={onEdit}
+        onClick={onOpenEdit}
         >
           <FiEdit className="icon icon_edit" />
         </button>

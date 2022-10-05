@@ -5,10 +5,10 @@ import TodoMiddle from "../components/TodoMiddle";
 import TodoSearch from "../components/TodoSearch";
 import TodoItem from "../components/TodoItem";
 import TodoModal from "../components/TodoModal";
-import TodoForm from "../components/TodoForm";
 import TodoAdd from "../components/TodoAdd";
 import EmptyTodos from "../components/EmptyTodos";
 import NotFoundTodos from "../components/NotFoundTodos";
+import TodoAlert from "../components/TodoAlert";
 import "../styles/pages/App.css";
 
 function App() {
@@ -21,15 +21,18 @@ function App() {
     searchedTodos,
     completeTodo,
     deleteTodo,
+    openModeEditTodo,
     editTodo,
     openModal,
     setOpenModal,
-    modeForm,
-    currentText,
-    openEditForm,
     todoEdit,
-    saveTodos,
-    todos,
+    setFormStatus,
+    formStatus,
+    setTodoEdit,
+    showAlert,
+    setShowAlert,
+    alertStatus,
+    setAlertStatus,
   } = useTodos();
 
   return (
@@ -48,40 +51,51 @@ function App() {
             searchValue={searchValue}
             setSearchValue={setSearchValue}
           />
-          <TodoAdd setOpenModal={setOpenModal} />
+          <TodoAdd
+            setOpenModal={setOpenModal}
+            setFormStatus={setFormStatus}
+            setTodoEdit={setTodoEdit}
+          />
         </TodoMiddle>
-        <TodoMiddle />
         <TodoList
           searchedTodos={searchedTodos}
           searchText={searchValue}
           totalTodos={totalTodos}
-          onEmptyTodos={() => <EmptyTodos setOpenModal={setOpenModal} />}
-          onNotFoundTodos={() => <NotFoundTodos searchText={searchValue} />}
-        >
-          {({ completed, text, id }) => (
-            <TodoItem
-              key={text}
-              id={id}
-              completed={completed}
-              text={text}
-              onComplete={() => completeTodo(id)}
-              onDelete={() => deleteTodo(id)}
-              onEdit={() => editTodo(id)}
+          onEmptyTodos={() => (
+            <EmptyTodos
+              setOpenModal={setOpenModal}
+              setFormStatus={setFormStatus}
+              setTodoEdit={setTodoEdit}
             />
           )}
-          
-          {!!openModal && (
-            <TodoModal>
-              <TodoForm
-                // { addTodo, setOpenModal, saveTodos, todos, todoEdit: todo}
-                addTodo={addTodo}
-                setOpenModal={setOpenModal}
-                saveTodos={saveTodos}
-                todoEdit={todo}
+          onNotFoundTodos={() => <NotFoundTodos searchText={searchValue} />}
+        >
+          <ul>
+            {searchedTodos.map(({ completed, text, id }) => (
+              <TodoItem
+                key={text}
+                id={id}
+                completed={completed}
+                text={text}
+                onComplete={() => completeTodo(id)}
+                onDelete={() => deleteTodo(id)}
+                onOpenEdit={() => openModeEditTodo(id)}
               />
-            </TodoModal>
-          )}
+            ))}
+          </ul>
+
+          <TodoModal
+            openModal={openModal}
+            addTodo={addTodo}
+            setOpenModal={setOpenModal}
+            todo={todoEdit}
+            editTodo={editTodo}
+            edit={formStatus}
+            setShowAlert={setShowAlert}
+            setAlertStatus={setAlertStatus}
+          />
         </TodoList>
+        {!!showAlert && <TodoAlert alertStatus={alertStatus}></TodoAlert>}
       </div>
     </main>
   );

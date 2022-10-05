@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/components/NotFoundTodos.css"
 
 function NotFoundTodos({searchText}) {
   return (

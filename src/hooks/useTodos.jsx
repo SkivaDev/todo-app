@@ -11,12 +11,16 @@ function useTodos() {
 
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  const [modeForm, setModeForm] = useState("submit");
-  const [currentText, setCurrentText] = useState("");
 
+  //notification
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertStatus, setAlertStatus] = useState(false);
+  
   //edit
   const [todoEdit, setTodoEdit] = useState("");
 
+  //status para el modal Form
+  const [formStatus, setFormStatus] = useState(false);
 
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -32,21 +36,30 @@ function useTodos() {
   } else {
     searchedTodos = todos;
   }
-  // Función generadora de id
-  const idGenerator = () => {
-    const id = new Date().getTime().toString();
-    return id;
-  }
+  
   // Función para añadir un nuevo TODO
-  const addTodo = (text) => {
+  const addTodo = (newTodo) => {
     const newTodos = [...todos];
-    newTodos.push({
-      id: idGenerator(),
-      text,
-      completed: false,
-    });
+    newTodos.push(newTodo);
     saveTodos(newTodos);
   };
+
+  // Edita el todo selecionado por el openModeEditTodo 
+  // onEdit (modal)
+  const editTodo = (todo) => {
+    const newTodos = todos.map((t) => {
+      if (t.id === todo.id) {
+        return todo;
+      }
+      return t;
+    });
+    saveTodos([...newTodos]);
+    setOpenModal(false);
+  }
+
+
+
+
   // Funcion para completar TODOs
   const completeTodo = (id) => {
     const todoIndex = todos.findIndex((todo) => todo.id === id);
@@ -60,23 +73,29 @@ function useTodos() {
   const deleteTodo = (id) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
     saveTodos(newTodos);
+
+    //muestra la notificacion por 1s y la cierra
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000);
+    setAlertStatus(false);
+    setShowAlert(true);
   };
 
-  // Funcion para editar TODOs
-  const openEditForm = () => {
-    // setCurrentText(text);
-    setOpenModal(true);
-    setModeForm("edit");
-    console.log(currentText);
-  }
-
-  const editTodo = (id) => {
+ 
+  // Identifica el todo en el que se hizo click edit y abre el modal
+  // onEdit (todolist para todoItem)
+  const openModeEditTodo = (id) => {
     const todo = todos.find((todo) => todo.id === id);
-    setTodoEdit(todo)
+    setTodoEdit(todo);
+    console.log(todo);
+    console.log("Se hizo click en todo y se agrego el todo a todoEdit")
     if(todo) {
-      openModal(true);
+      setOpenModal(true);
+      setFormStatus(true);
     }
   }
+
 
   return {
     totalTodos,
@@ -87,15 +106,20 @@ function useTodos() {
     searchedTodos,
     completeTodo,
     deleteTodo,
+    openModeEditTodo,
     editTodo,
     openModal,
     setOpenModal,
-    modeForm,
-    currentText,
-    openEditForm,
     todoEdit,
+    setTodoEdit,
     saveTodos,
     todos,
+    setFormStatus,
+    formStatus,
+    showAlert,
+    setShowAlert,
+    alertStatus,
+    setAlertStatus,
   };
 }
 

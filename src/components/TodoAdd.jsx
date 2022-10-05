@@ -3,10 +3,13 @@ import { BsFillPlusCircleFill } from "react-icons/bs"
 import "../styles/components/TodoAdd.css"
 
 
-function TodoAdd({setOpenModal}) {
+function TodoAdd({setOpenModal, setFormStatus, setTodoEdit}) {
 
   const onClickButtonModal = () => {
-    setOpenModal(prevState => !prevState);
+    setFormStatus(false);
+    setTodoEdit("");
+    setOpenModal(true);
+    // setOpenModal(prev => !prev);
   }
 
   return (
