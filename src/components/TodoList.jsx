@@ -16,16 +16,4 @@ function TodoList(props) {
 
 export default TodoList;
 
-{
-  /* {todos && todos.length > 0 ? (
-    todos.map()
-  ) : totalTodos > 0 ? (
-    <li className="ad_itemNotfound">
-      <p>No hay resultados para: {searchValue}</p>
-    </li>
-  ) : (
-    <li className="ad_noItems">
-      Crea una nueva tarea <TodoAdd />
-    </li>
-  )} */
-}
+

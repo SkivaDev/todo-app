@@ -6,7 +6,7 @@ import "../styles/components/TodoItem.css";
 
 
 
-function TodoItem({ text , id, completed, onComplete, onDelete, onOpenEdit}) {
+function TodoItem({ text, completed, onComplete, onDelete, onOpenEdit}) {
   return (
     <li className="TodoItem">
       <div className="cheackbox">

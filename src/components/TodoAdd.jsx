@@ -9,7 +9,6 @@ function TodoAdd({setOpenModal, setFormStatus, setTodoEdit}) {
     setFormStatus(false);
     setTodoEdit("");
     setOpenModal(true);
-    // setOpenModal(prev => !prev);
   }
 
   return (

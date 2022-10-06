@@ -74,7 +74,6 @@ function App() {
             {searchedTodos.map(({ completed, text, id }) => (
               <TodoItem
                 key={text}
-                id={id}
                 completed={completed}
                 text={text}
                 onComplete={() => completeTodo(id)}

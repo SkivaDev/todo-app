@@ -42,18 +42,12 @@ function TodoModal({
       setText(todo.text);
       setCompleted(todo.completed);
       setError(false); // si funciona
-      console.log("todoForm error es" + error);
-      console.log("CAMBIO LA VARIABLE text... se uso el setText: " + text);
-      console.log(
-        "CAMBIO LA VARIABLE completed... se uso el setCompleted: " + completed
-      );
     }
   }, [todo]);
 
   // funcion independiente
   const validate = (value) => {
     if (!value) {
-      console.log("EL TEXTO INGESADO ESTA VACIO :((((((((((((");
       inputRef.current.focus();
       setText(value);
       setError(true);
@@ -67,8 +61,6 @@ function TodoModal({
     event.preventDefault();
     if (!edit) onCreate();
     else onEditSubmit();
-
-    console.log("Se ejecuto el SUBMIT");
   };
 
   const onCreate = () => {
@@ -98,8 +90,6 @@ function TodoModal({
       setText("");
       setCompleted(false);
       setOpenModal(false);
-      console.log(text + " onEditSubmit");
-      console.log("Se ejecuto el onEditSubmit");
       setTimeout(() => {
         setShowAlert(false);
       }, 3000);
@@ -118,7 +108,6 @@ function TodoModal({
   const onCancel = () => {
     setError(false);
     setOpenModal(false);
-    console.log(error + "EL ERROR ES");
   };
 
   return (
