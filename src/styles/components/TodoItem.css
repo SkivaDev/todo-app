@@ -28,7 +28,7 @@
 }
 .cheackbox .button_cheackbox--active {
   border: none;
-  background: linear-gradient(135deg,aqua 13%,#9e3ffb 66%);
+  background: linear-gradient(90deg, rgba(56,0,255,1) 0%, rgba(178,29,226,1) 100%);
   color: #fff;
 }
 
@@ -48,6 +48,7 @@
   word-break: break-word;
 }
 .cheackbox .text_cheackbox--active {
+  color: #b0b0cc;
   text-decoration: line-through;
 }
 
